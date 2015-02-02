@@ -1,0 +1,615 @@
+/* CONTENT LAYOUT.CSS
+ * 	- typography & vertical rhythm
+ * 	- horizontal grid layout & box model
+ * 
+ * COLOR SCHEME:
+ *  rgba(225,0,18,1)     crimson red
+ *  rgba(133,4,8,1)      dark red
+ *  rgba(204,204,204,1)  muted grey
+ *  rgba(128,128,128,1)  medium grey
+ * 	rgba(5,5,5,1)        muted black
+ * 	rgba(250,250,250,1)  off white
+ * 	rgba(240,240,240,.1) transparent off white
+ * 
+ * COPY FONT
+ * 	Merriweather, MerriweatherFallback
+ * INTERFACE FONT
+ *  Josefin Sans
+ * 
+ * RESPONSIVE GRID
+ * BREAK POINTS
+ * 	40em(640px) 45em(720px) 50em 55em 61em 73em 87em 105em 117em 130em
+ *
+ * (c) agnostic HTML5 design: pixelcraftbooks
+ * free to use under the MIT license
+ */
+ 
+/* ========================== TYPOGRAPHY & VERTICAL RHYTHM ========================== 
+ * this section is to establish the vertical rhythm, and the look of elements
+ * all elements are vanilla HTML5 tags or aria-roles for the CSS to be fully agnostic
+ * (you can drop the css on top of semantic (!) HTML5 to generate a consistent look) 
+ */
+html {
+	color: rgba(5,5,5,1);
+	background-color: rgba(250,250,250,1);
+	max-width: 160em;
+	-webkit-font-smoothing: antialiased;
+	 -moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
+	    -ms-text-size-adjust: 100%;
+	-webkit-font-feature-settings: "calt", "liga", "clig", "kern";
+	   -moz-font-feature-settings: "calt", "liga", "clig", "kern";
+	    -ms-font-feature-settings: "calt", "liga", "clig", "kern";
+	     -o-font-feature-settings: "calt", "liga", "clig", "kern";
+	        font-feature-settings: "calt", "liga", "clig", "kern";
+}
+	@media screen and (max-width:  40em) {	html {	font-size:  90%;} }
+	@media screen and (min-width:  45em) {	html {	font-size:  93%;} }
+	@media screen and (min-width:  55em) {	html {	font-size:  97%;} }
+	@media screen and (min-width:  61em) {	html {	font-size: 100%;} }
+	@media screen and (min-width:  73em) {	html {	font-size: 105%;} }
+	@media screen and (min-width:  87em) {	html {	font-size: 110%;} }
+	@media screen and (min-width: 105em) {	html {	font-size: 125%;} }
+	@media screen and (min-width: 117em) {	html {	font-size: 140%;} }
+	@media screen and (min-width: 130em) {	html {	font-size: 150%;} }
+body {
+	font-family: Merriweather, MerriweatherFallback, Serif;
+	font-style: normal;
+	font-size: 1.25em;
+	line-height: 1.6;
+	margin-bottom: 4.5em;
+	}
+header[role="banner"] {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	text-align: center;
+	height: 85vh;
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+	width: 100%;
+}
+main { 	display: block; }
+	main:after{
+		content: "";
+		display: block;
+		margin-top: 4.5em;
+		margin-bottom: 4.5em;
+		border-top: 1px rgba(204,204,204,1) dotted;
+		width: 100%;
+	}
+h1 {
+	font-size: 1.6em;
+	line-height: 1.875em;
+	margin-top: 0.9375em;
+	margin-bottom: 0.9375em;
+	text-transform: uppercase;
+	font-weight: 700;
+	letter-spacing: 0.2em;
+	clear: both;
+}
+	@media screen and (min-width: 55em) {	
+		h1 {	
+			font-size: 2.6em;
+			line-height: 1.153846154;
+			margin-top: 1.15384615em;
+			margin-bottom: 0.57692308em;
+		}
+	}
+	@media screen and (min-width: 61em) {
+		main h1 {
+			font-size: 4.25em;
+			line-height: 1.058823528em;
+			margin-top: 0.70588235em;
+			margin-bottom: 0.35294118em;
+			font-weight: 300;
+			letter-spacing: normal;
+		}
+	}
+h2 {
+	font-size: 1.6em;
+	line-height: 1.875em;
+	margin-top: 0.9375em;
+	margin-bottom: 0.9375em;
+	font-style: italic;
+	letter-spacing: 0.02em;
+	clear: both;
+}
+	@media screen and (min-width: 61em) {
+		h2 {
+			font-size: 2.6em;
+			line-height: 1.153846154em;
+			margin-top: 1.15384615em;
+			margin-bottom: 0.57692308em;
+			letter-spacing: normal;
+		}
+	}
+h3 {
+	font-size: 1.6em;
+	line-height: 1.875;
+	margin-top: 0.9375em;
+	margin-bottom: 0.9375em;
+	clear: both;
+}
+h4 {
+	font-size: 1em;
+	line-height: 1.5;
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+}
+p {
+	text-indent: 1.5em;
+	-webkit-hyphens: auto;
+		 -moz-hyphens: auto;
+					hyphens: auto;
+}
+	article > p:first-child,
+	h1 + p,
+	h2 + p,
+	h3 + p,
+	h4 + p,
+	header + p,
+	hr + p,
+	blockquote + p,
+	table + p,
+	figure + p,
+	form + p,
+	button + p,
+	div + p,
+	article > q + p {
+		text-indent: 0;
+	}
+p,
+ul,
+ol,
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+ul {
+	list-style-type: none;
+	list-style-position: outside;
+	padding: 0;
+	margin-bottom: 1.5em;
+}
+	ul > li:before {
+		content: "— ";
+		color:  rgba(128,128,128,1);
+	}
+ol {
+	list-style-type: none;
+	list-style-position: outside;
+	padding: 0;
+	margin-bottom: 1.5em;
+	counter-reset: ol-counter;
+}
+	ol > li:before {
+		content: counter(ol-counter, upper-roman);
+		counter-increment: ol-counter;
+		float: left;
+		width: 1em;
+		margin-right: 0.5em;
+		color: rgba(128,128,128,1);
+	}
+pre {
+	font-family: inherit;
+	font-style: inherit;
+	line-height: inherit;
+	padding: inherit;
+	margin: inherit;
+}
+figure,
+table {
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+	border-top: 1px rgba(204,204,204,1) dotted;
+	border-bottom: 1px rgba(204,204,204,1) dotted;
+	margin-top: 1.5em;
+	margin-bottom: calc(1.5em - 2px);
+}
+	@media screen and (min-width: 55em) {	
+		figure,
+		table {	
+			margin-top: 3em;
+			margin-bottom: calc(3em - 2px);
+		}
+	}
+table {
+	font-size: inherit;
+	text-align: center;
+	border-spacing: 0;
+}
+	table > thead,
+	table > tbody,
+	table > tfoot,
+	table th,
+	table tr,
+	table td,
+	table p {
+		text-indent: 0;
+		padding: 0;
+		border: 0;
+		border-spacing: 0;
+	}
+blockquote {
+	font-style: italic;
+	border-left: 1px rgba(204,204,204,1) dotted;
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+}
+	blockquote > p {
+		margin: 0;
+		padding: 0;
+	}
+	blockquote > p:first-child {
+		text-indent: 0;
+	}
+	blockquote + blockquote,
+	p + blockquote {
+		margin-top: 1.5em;
+	}
+		blockquote > cite,
+		blockquote > footer > cite {
+			display: block;
+			text-align: right;
+		}
+			blockquote > cite:before,
+			blockquote > footer > cite:before {
+				content: "— ";
+			}
+figcaption {
+	font-family: "Josefin Sans", "Josefin Sans Fallback", Serif;
+	font-style: normal;
+	text-align: center;
+	font-size: calc(1em / 3 * 2);
+	line-height: calc(1.25em / 4 * 5);
+	padding-top: calc(1.25em / 4 * 2);
+	margin-bottom: 0;
+}
+sup,
+sub {
+	vertical-align: baseline;
+	position: relative;
+	top: -0.4em;
+	font-size: 0.8em;
+}
+sub {	top: 0.4em; }
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px rgba(204,204,204,1) solid;
+	margin: 0 auto;
+	margin-top: calc(4.5em - 2px);
+	margin-bottom: 4.5em;
+	width: calc(100% / 16 * 4);
+	clear: both;
+}
+img {
+	display: block;
+	width: auto;
+	max-width: 100%;
+	height: auto;
+	max-height: 90vh;
+	margin: 0 auto;
+}
+	article > img {
+		margin-top: 1.5em;
+		margin-bottom: 1.5em;
+		background-color: rgba(240,240,240,.1);		
+		-webkit-box-shadow: 0px 2px 3px 0px #888, 0px -2px 3px 0px #888;
+		 	 -moz-box-shadow: 0px 2px 3px 0px #888, 0px -2px 3px 0px #888;
+						box-shadow: 0px 2px 3px 0px #888, 0px -2px 3px 0px #888;
+	}
+		@media screen and (min-width: 55em) {	
+			article > img {	
+				margin-top: 3em;
+				margin-bottom: 3em;
+			}
+		}
+embed,
+object,
+iframe,
+video {
+	width: 100%;
+	height: auto;
+	max-height: 90vh;
+}
+	article > embed,
+	article > object,
+	article > iframe,
+	article > video {
+		margin-top: 1.5em;
+		margin-bottom: 1.5em;
+	}
+		@media screen and (min-width: 55em) {	
+			article > embed,
+			article > object,
+			article > iframe,
+			article > video {	
+				margin-top: 3em;
+				margin-bottom: 3em;
+			}
+		}
+button,
+input,
+select,
+textarea {
+	color: rgba(5,5,5,1);
+}
+main [role="button"],
+[role="banner"] [role="button"] {
+/* hack - scoped to main, because Hype CSS reset does not account for aria-roles */
+		display: block;
+		color: #000;
+		font-family: "Josefin Sans", "Josefin Sans Fallback", Sans-Serif;
+		font-style: normal;
+		text-transform: uppercase;
+		letter-spacing: .1em;
+		padding: .6em 1em .4em 1em;
+		margin: 1.5em auto;
+		border: 1px solid rgba(255,255,255,.6);
+		border-radius: 0.2em;
+		background-color: rgba(240,240,240,.4);
+		box-shadow: 0 0 8px rgba(255,255,255,.3), 0 0 5px rgba(20,20,20,.6);
+		cursor: pointer;
+	}
+	[role="button"]:active {
+		box-shadow: 0 0 6px rgba(255,255,255,.4);
+	}
+	[role="button"][aria-pressed="true"] {
+		border: 1px solid rgba(255,255,255,1);
+		background-color: rgba(255,255,255,.8);
+	}
+label{
+	font-family: "Josefin Sans", "Josefin Sans Fallback", Sans-Serif;
+	font-style: normal;
+}
+form {
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+	border: 1px  rgba(204,204,204,1) dotted;
+	border-radius: .5em;
+}
+form input,
+form textarea {
+	font-family: inherit;
+	font-weight: inherit;
+	padding: .5em 1em;
+	border: 1px solid  rgba(204,204,204,1);
+	border-radius: .2em;
+	width: calc(100% - 2em);
+	-webkit-box-shadow: inset 0 1px 2px #DDD, 0 1px 0 #FFF;
+	    -moz-box-shadow:inset 0 1px 2px #DDD, 0 1px 0 #FFF;
+	        box-shadow: inset 0 1px 2px #DDD, 0 1px 0 #FFF;
+}
+	form label {
+		display: block;
+		margin-top: 1.5em;
+		padding: 0;
+	}
+	form button[role="button"] {
+		margin-top: 3em;
+		width:100%;
+	}
+i,
+b,
+q,
+em,
+strong,
+small,
+code,
+cite {
+ 	font-size: inherit;
+ 	font-weight: inherit;
+	line-height: inherit;
+}
+b,
+strong {
+	font-style: bold;
+	font-weight: 700;
+}
+i,
+q,
+em {
+	font-style: italic;
+}
+	article > q {
+		display: block;
+		color: rgba(128,128,128,1);
+		font-style: oblique;
+		font-weight: 700;
+		margin-top: 1.5em;
+		margin-bottom: 1.5em;
+		clear: both;
+	}
+		@media screen and (min-width: 61em) {
+			article > q {
+				font-size: 1.6em;
+				font-style: normal;
+				font-weight: 300;
+				line-height: 1.875em;
+				margin-top: 0.9375em;
+				margin-bottom: 0.9375em;
+			}
+		}
+del {
+	text-decoration: line-through;
+}
+small {
+	color:  rgba(128,128,128,1);
+}
+cite {
+	font-style: normal;
+}
+abbr {
+	text-transform: uppercase;
+	font-variant: small-caps;
+}
+main > article > aside {
+	color:  rgba(128,128,128,1);
+}
+main > article > aside:before {
+	content: "❧ ";
+	color: rgba(5,5,5,1);
+}
+	@media screen and (min-width: 73em) {
+		main > article > aside { 
+			/* break into two content columns > main text | side notes < */
+			font-size: calc(1em / 3 * 2);
+			line-height: calc(1.25em / 4 * 5);
+			padding-top: calc(1.25em / 4 * 2);
+			margin-bottom: calc(1.25em / 4 * 5);
+		}
+	}
+a {
+	color: rgba(133,4,8,1);
+	text-decoration: none;
+	transition: 1s;
+}
+	a:hover, a:active, a:focus {
+		color: rgba(133,4,8,1);
+		text-decoration: underline;
+	} 
+	sup a:before {
+		content: "[";
+	}
+	sup a:after {
+		content: "]";
+	}
+
+/*
+ *  ========================== HORIZONTAL GRID LAYOUT ==========================
+ * separated from typography and visuals for easier editing of position
+ * 16 segments, position determined by padding & margins of calc(100% / X)
+ */
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+q,
+blockquote,
+figure,
+form,
+pre,
+table,
+aside {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	position: relative;
+	margin-left: 3.125%;
+	margin-right: 3.125%;
+}
+	blockquote > p,
+	figure > pre,
+	figure > table,
+	figure > blockquote { 
+		/* reset nested elements to fill parent */
+		width: 100%;
+		padding: 0;
+		margin: 0;
+		border: 0;
+	}
+	blockquote,
+	figure > blockquote,
+	form { 
+		/* reset blockquote & form to maintain text inset */
+		padding-left: 1.5em;
+		padding-right: 1.5em;
+	}
+	@media screen and (min-width: 45em) { 
+		/* single column with spacious margins (100/32 margin for headlines)
+		 * 100/16 | 100/16*14 | 100/16
+		 */
+		h4,
+		p,
+		ul,
+		ol,
+		blockquote,
+		figure,
+		form,
+		pre,
+		table,
+		main > article > aside {
+			margin-left: 0;
+			margin-right: 0;
+			width: calc(100% / 16 * 14);
+			margin-left: calc(100% / 16);
+		}
+	}
+	@media screen and (min-width: 50em) {
+		/* single column with spacious margins, headlines shifted to 100/16
+		 * 100/16 > 100/16 | 100/16*12 | 100/16 < 100/16 
+		 */
+		h1,
+		h2,
+		h3,
+		article > q {
+			width: 100%;
+			margin-left: 0;
+			margin-right: 0;
+			padding-left: calc(100% / 16);
+			padding-right: calc(100% / 16);
+		}
+		h4,
+		p,
+		ul,
+		ol,
+		blockquote,
+		figure,
+		form,
+		pre,
+		table,
+		main > article > aside {
+			width: calc(100% / 16 * 12);
+			margin-left: calc(100% / 16 * 2);
+		}
+	}
+	@media screen and (min-width: 61em) {
+		/* main column shrunk for optimal line length
+		 * 100/16 > 100/16 |  100/16 | 100/16*10 |  100/16 | 100/16 < 100/16
+		 */
+		h4,
+		p,
+		ul,
+		ol,
+		blockquote,
+		figure,
+		form,
+		pre,
+		table,
+		main > article > aside {
+			width: calc(100% / 16 * 10);
+			margin-left: calc(100% / 16 * 3);
+		}
+	}
+	@media screen and (min-width: 73em) {
+		/* break into two content columns > main text | side notes <
+		 * 100/16 > 100/16 |  100/16*10 | 100/16 |  100/16* | 100/16 < 100/16
+		 */
+		 h4,
+		 p,
+		 ul,
+		 ol,
+		 blockquote,
+		 figure,
+		 form,
+		 pre,
+		 table {
+		 	width: calc(100% / 16 * 10);
+			margin-left: calc(100% / 16);
+		 }
+		main > article > aside {
+			width: calc(100% / 16 * 3);
+			margin-right: calc(100% / 16);
+			margin-left: 0;
+			float: right;
+		}
+	}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="295.759" height="435.546" viewBox="0, 0, 295.759, 435.546">
+  <g id="ereader" transform="translate(-253.784, -168.81)">
+    <g>
+      <path d="M270.177,168.81 C261.096,168.81 253.784,176.101 253.784,185.157 L253.784,300.751 L257.444,302.206 L253.784,303.116 L253.784,353.636 L257.444,355.092 L253.784,356.001 L253.784,461.09 L257.444,462.545 L253.784,463.455 L253.784,583.232 C253.784,592.288 261.122,598.904 270.177,599.58 C358.566,606.178 446.18,605.714 533.15,599.58 C542.208,598.941 549.543,592.288 549.543,583.232 L549.543,463.591 L545.359,462.545 L549.543,460.886 L549.543,356.138 L545.359,355.092 L549.543,353.432 L549.543,303.252 L545.359,302.206 L549.543,300.546 L549.543,185.157 C549.543,176.101 542.231,168.81 533.15,168.81 L270.177,168.81" fill="#FFFFFF" id="path123261"/>
+      <path d="M274.385,173.77 L528.942,173.77 C537.732,173.77 544.809,180.881 544.809,189.713 L544.809,577.977 C544.809,586.81 537.71,593.297 528.942,593.92 C444.751,599.904 359.949,600.356 274.385,593.92 C265.619,593.261 258.518,586.81 258.518,577.977 L258.518,189.713 C258.518,180.881 265.594,173.77 274.385,173.77 z" fill="#B8B8B8" id="path5668"/>
+      <path d="M285.934,205.954 L516.961,205.954 C520.53,205.954 523.424,208.847 523.424,212.416 L523.424,526.646 C523.424,530.215 520.53,533.108 516.961,533.108 L285.934,533.108 C282.365,533.108 279.472,530.215 279.472,526.646 L279.472,212.416 C279.472,208.847 282.365,205.954 285.934,205.954 z" fill="#CCCCCC" id="rect5671"/>
+      <path d="M389.331,548.456 L411.949,548.456 C415.518,548.456 418.411,551.349 418.411,554.918 L418.411,577.536 C418.411,581.105 415.518,583.998 411.949,583.998 L389.331,583.998 C385.762,583.998 382.869,581.105 382.869,577.536 L382.869,554.918 C382.869,551.349 385.762,548.456 389.331,548.456 z" fill="#949494" id="rect5673"/>
+      <path d="M389.331,554.918 L411.949,554.918 L411.949,577.536 L389.331,577.536 z" fill="#B8B8B8" id="rect5696"/>
+    </g>
+    <text transform="matrix(1, 0, 0, 1, 401.663, 372.866)">
+      <tspan x="-116.419" y="-125" font-family="HelveticaNeue-CondensedBold" font-size="36" fill="#535252">Breathless </tspan>
+      <tspan x="-116.419" y="-81" font-family="HelveticaNeue-CondensedBold" font-size="36" fill="#535252">Through the </tspan>
+      <tspan x="-116.419" y="-37" font-family="HelveticaNeue-CondensedBold" font-size="36" fill="#535252">Night</tspan>
+      <tspan x="47.407" y="-11" font-family="HelveticaNeue-LightItalic" font-size="18" fill="#535252">H. Fisher</tspan>
+      <tspan x="-24.448" y="65" font-family="ZapfDingbatsITC" font-size="60" fill="#636363">❀</tspan>
+      <tspan x="-116.419" y="111" font-family="HelveticaNeue-Medium" font-size="12" fill="#535252">It was the best of times, it was the worst </tspan>
+      <tspan x="-116.419" y="126" font-family="HelveticaNeue-Medium" font-size="12" fill="#535252">of times. A glorious spectacle on the </tspan>
+      <tspan x="-116.419" y="141" font-family="HelveticaNeue-Medium" font-size="12" fill="#535252">football pitch and an abysmal display of </tspan>
+      <tspan x="-116.419" y="156" font-family="HelveticaNeue-Medium" font-size="12" fill="#535252">musical vulgarity formed an unholy union.</tspan>
+    </text>
+  </g>
+</svg>
