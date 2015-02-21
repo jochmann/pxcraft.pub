@@ -28,5 +28,5 @@
 	font-family: 'Josefin Sans Fallback';
 	font-style: normal;
 	font-weight: 300;
-	src: local('Josefin Sans'), local('JosefinSans'), url(../fonts/JosefinSans-Light.ttf) format('truetype');
+	src: local('Josefin Sans'), local('JosefinSans-Light'), url(../fonts/JosefinSans-Light.ttf) format('truetype');
 }

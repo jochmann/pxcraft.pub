@@ -1,3 +1,7 @@
+/*
+ * all the spaghetti code from all the functions in previous versions cobbled together, then dismantled.
+ * reduced to just give us the reading time now - kinda works, we'll fix it later
+ */
 (function ($, window, document, undefined) {
   
   var pluginName = "readingTime";
@@ -37,7 +41,7 @@
       } else if(progress >= 1) {
         text = 'The End';
       } else if (total_reading_time_remaining <= 1) {
-        text = '1min';
+        text = '<1min';
       }
 
       targetTag

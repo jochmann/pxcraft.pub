@@ -95,61 +95,89 @@ $(document).ready(function(){
 // is-classes style elements in interface.css
 (function ( $ ) {
     $.fn.toggleContentinfo = function() {
-        $("body").toggleClass("is-modal-background");
-        $("[role='contentinfo']").toggleClass("is-modal-active");
-        
         // toggle close button in Hype-UI
-        if ($("[role='contentinfo']").hasClass("is-modal-active")) {
-            HYPE.documents["UI"].startTimelineNamed("show-contentinfo-close", HYPE.documents["UI"].kDirectionForward);
-        } 
         if (!$("[role='contentinfo']").hasClass("is-modal-active")) {
-            HYPE.documents["UI"].startTimelineNamed("show-contentinfo-close", HYPE.documents["UI"].kDirectionReverse);
+            HYPE.documents["UI"].startTimelineNamed("toggle-menubutton", HYPE.documents["UI"].kDirectionForward);
         }
+        if ($("[role='contentinfo']").hasClass("is-modal-active")) {
+            HYPE.documents["UI"].startTimelineNamed("toggle-menubutton", HYPE.documents["UI"].kDirectionReverse);
+        }
+        $("body").toggleClass("is-modal-background");
+        $("[role='contentinfo']").toggleClass("is-modal-active");   
+        
         // close open menu in Hype-UI
         if ($("body").hasClass("is-menu-background")) {
             HYPE.documents["UI"].startTimelineNamed("show-menu", HYPE.documents["UI"].kDirectionReverse);
         }
-        
+        // hide the Hype-UI menu extension
+        if (HYPE.documents["UI"].currentTimeInTimelineNamed('show-menu-extension') > 0) {
+                HYPE.documents["UI"].startTimelineNamed("show-menu-extension", HYPE.documents["UI"].kDirectionReverse);
+        }
         return this;	
     }
 }( jQuery ));
-// hide modal overlay & UI-menu when clicked outside (on header or main)
+// close modal overlay & UI-menu when clicked outside (on header or main)
 $("main, [role='banner']").mousedown(function(event){
     var $target = $(event.target);
-    if(!$target.is(".js-toggle-contentinfo") && $("[role='contentinfo']").hasClass("is-modal-active")) {
+    if (!$target.is(".js-toggle-contentinfo") && $("[role='contentinfo']").hasClass("is-modal-active")) {
         $(this).toggleContentinfo();
     }
     if ($("body").hasClass("is-menu-background")) {
         HYPE.documents["UI"].startTimelineNamed("show-menu", HYPE.documents["UI"].kDirectionReverse);
+        HYPE.documents["UI"].startTimelineNamed("toggle-menubutton", HYPE.documents["UI"].kDirectionReverse);
+    }
+    if (HYPE.documents["UI"].currentTimeInTimelineNamed("show-purchase-options") > 0) {
+        HYPE.documents["UI"].startTimelineNamed("show-purchase-options", HYPE.documents["UI"].kDirectionReverse);
+    }
+    if (HYPE.documents["UI"].currentTimeInTimelineNamed("heart-twirl") > 0) {
+        HYPE.documents["UI"].startTimelineNamed("heart-twirl", HYPE.documents["UI"].kDirectionReverse);
     }
 });
+
+// append title to header from meta-information
+$(document).ready(function(){
+    var title = $(".is-title");
+    $(".js-get-title").appendTo(title);
+});
+
 // toggle contentinfo on fallback-button in header 
 // (link to imprint above the fold a legal requirement in Germany)
 $(".js-toggle-contentinfo").mousedown(function() {
     $(this).toggleContentinfo();
 });
 
+// close contentinfo/menu on ESC
+$(document).keyup(function(ev){
+    if ((ev.keyCode == 27) && $("[role='contentinfo']").hasClass("is-modal-active")) {
+        $(this).toggleContentinfo();
+    }
+    if ((ev.keyCode == 27) && $("body").hasClass("is-menu-background")) {
+        HYPE.documents["UI"].startTimelineNamed("show-menu", HYPE.documents["UI"].kDirectionReverse);
+        HYPE.documents["UI"].startTimelineNamed("toggle-menubutton", HYPE.documents["UI"].kDirectionReverse);
+    }
+    if (HYPE.documents["UI"].currentTimeInTimelineNamed("heart-twirl") > 0) {
+        HYPE.documents["UI"].startTimelineNamed("heart-twirl", HYPE.documents["UI"].kDirectionReverse);
+    }
+});
+
 // hide menu-extension with link to "imprint" when scrolling down into main
 $("main").waypoint(function(direction) {
-    if (direction === "down") {
+    // ensure that the animation only fires, if the menu is currently closed
+    if (direction === "down" && HYPE.documents["UI"].currentTimeInTimelineNamed('show-menu-extension') > 0) {
         HYPE.documents["UI"].startTimelineNamed("show-menu-extension", HYPE.documents["UI"].kDirectionReverse);
     }
-    if (direction === "up") {
+    // prevent the animation from firing when modals are active to avoid toggle button conflicts
+    if (direction === "up" && !$('body').hasClass('is-modal-background')) {
         HYPE.documents["UI"].startTimelineNamed("show-menu-extension", HYPE.documents["UI"].kDirectionForward);
     }
 }, { 
     offset: '60%' 
 });
 
-// initiate interactive paragraph script for inline comments 
-$(document).ready(function(){
-    $('main article').paragraphLinks();
-});
-
-// scroll to signup-form
-$(".js-scrollto-support").mousedown(function() {
+// scroll to CTA
+$(".js-scrollto-cta").mousedown(function() {
     $('html, body').animate({
-        scrollTop: $("#support").offset().top
+        scrollTop: $("#cta").offset().top
     }, 1000);
 });
 
@@ -174,3 +202,9 @@ $(document).ready(function(){
         $(".js-modernizr-warning").show();
     }
 });
+
+// initiate interactive paragraph script for inline comments
+// transferred to hype, to wait for scene-load to complete
+// $(document).ready(function(){
+//     $('main article').paragraphLinks();
+// });

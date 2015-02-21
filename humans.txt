@@ -8,8 +8,10 @@
 # THANKS
 
     <name>
+    pixelcraftbooks for providing pxcraft.pub
 
-# TECHNOLOGY COLOPHON
+# TECHNOLOGY
 
     HTML5, CSS3
     jQuery, Modernizr
+    pandoc, pelican, markdown
