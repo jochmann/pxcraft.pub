@@ -1,8 +1,8 @@
-/en
-/de
-/assets
-/images
-/test
+en/
+de/
+assets/
+images/
+test/
 /static/32_pxcraft heart.png
 /static/64_pxcraft heart.png
 /static/apple-touch-icon-57x57.png
