@@ -1,6 +1,6 @@
 # pxcraft.pub
 
-This is a design foundation for a simple, yet powerful publishing paradigm for highly interactive digital books &amp; longform reading. Find out more about <a href="http://pxcraft.pub/why">why</a> we created this. Hopefully you'll be amped up to help us create a world with better, more beautiful digital reading experiences. We want to create digital literature to fall in love with.
+This is a design foundation for a simple, yet powerful publishing paradigm for highly interactive digital books &amp; longform reading. Find out more about <a href="http://pxcraft.pub/">why</a> we created this. Hopefully you'll be amped up to help us create a world with better, more beautiful digital reading experiences. We want to create digital literature to fall in love with.
 
 ### Currently the files in this repository consist of a template stack to turn vanilla HTML into beautiful longform reading through
 
