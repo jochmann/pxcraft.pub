@@ -4,29 +4,29 @@
 	font-family: 'MerriweatherFallback';
 	font-style: normal;
 	font-weight: 300;
-	src: local('Merriweather'), url(../fonts/Merriweather-Light.ttf) format('truetype');
+	src: local('Merriweather'), url(/fonts/Merriweather-Light.ttf) format('truetype');
 }
 @font-face {
 	font-family: 'MerriweatherFallback';
 	font-style: italic;
 	font-weight: 300;
-	src: local('Merriweather Italic'), local('Merriweather-Italic'), url(../fonts/Merriweather-LightItalic.ttf) format('truetype');
+	src: local('Merriweather Italic'), local('Merriweather-Italic'), url(/fonts/Merriweather-LightItalic.ttf) format('truetype');
 }
 @font-face {
 	font-family: 'MerriweatherFallback';
 	font-style: bold;
 	font-weight: 700;
-	src: local('Merriweather Bold'), local('Merriweather-Bold'), url(../fonts/Merriweather-Bold.ttf) format('truetype');
+	src: local('Merriweather Bold'), local('Merriweather-Bold'), url(/fonts/Merriweather-Bold.ttf) format('truetype');
 }
 @font-face {
 	font-family: 'MerriweatherFallback';
 	font-style: oblique;
 	font-weight: 700;
-	src: local('Merriweather Oblique'), local('Merriweather-Oblique'), url(../fonts/Merriweather-BoldItalic.ttf) format('truetype');
+	src: local('Merriweather Oblique'), local('Merriweather-Oblique'), url(/fonts/Merriweather-BoldItalic.ttf) format('truetype');
 }
 @font-face {
 	font-family: 'Josefin Sans Fallback';
 	font-style: normal;
 	font-weight: 300;
-	src: local('Josefin Sans'), local('JosefinSans-Light'), url(../fonts/JosefinSans-Light.ttf) format('truetype');
+	src: local('Josefin Sans'), local('JosefinSans-Light'), url(/fonts/JosefinSans-Light.ttf) format('truetype');
 }

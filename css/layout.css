@@ -155,6 +155,7 @@ p {
 					hyphens: auto;
 }
 	article > p:first-child,
+	section > p:first-child,
 	h1 + p,
 	h2 + p,
 	h3 + p,
@@ -352,8 +353,10 @@ textarea {
 	color: #050505; /* old IE */
 	color: rgba(5,5,5,1);
 }
-main [role="button"],
-[role="banner"] [role="button"] {
+main > article > [role="button"],
+[role="banner"] > [role="button"],
+figure > [role="button"],
+form > [role="button"] {
 /* hack - scoped to main, because Hype CSS reset does not account for aria-roles */
 		display: block;
 		color: #000;
@@ -431,7 +434,8 @@ q,
 em {
 	font-style: italic;
 }
-	article > q {
+	article > q,
+	section > q {
 		display: block;
 		color: #808080; /*old IE */
 		color: rgba(128,128,128,1);
@@ -442,7 +446,8 @@ em {
 		clear: both;
 	}
 		@media screen and (min-width: 61em) {
-			article > q {
+			article > q,
+			section > q {
 				font-size: 1.6em;
 				font-style: normal;
 				font-weight: 300;

@@ -57,17 +57,17 @@ $(document).ready(function(){
 });
 
 // scroll window height on click
-// script can be referenced from within Hype
+// script can be called from within Hype-UI
 (function ( $ ) {
     $.fn.scrollView = function() {
         var y = $(window).scrollTop();  
-        $("html, body").animate({ scrollTop: y + $(window).height() - 90 }, 600);
+        $("html, body").animate({ scrollTop: y + $(window).height() - 90 }, 200);
         return this;
     }
 }( jQuery ));
 
 // Reading Mode Toggles
-// script can be referenced from within Hype
+// script can be called from within Hype-UI
 // is-classes style elements in interface.css
 (function ( $ ) {
     $.fn.toggleNight = function() {
@@ -134,11 +134,21 @@ $("main, [role='banner']").mousedown(function(event){
     }
 });
 
-// append title to header from meta-information
-$(document).ready(function(){
-    var title = $(".is-title");
-    $(".js-get-title").appendTo(title);
-});
+// get the translation urls
+// call from within Hype-UI to create links to translations programmatically
+(function ( $ ) {
+    $.fn.getHreflang = function() {
+        // get urls from metadata section in footer
+        var en = $(".js-get-href-en").attr("href");
+        var de = $(".js-get-href-de").attr("href");
+        var es = $(".js-get-href-es").attr("href");
+        
+        $(".js-en").attr("href", en);
+        $(".js-de").attr("href", de);
+        $(".js-es").attr("href", es);
+        return this;	
+    }
+}( jQuery ));
 
 // toggle contentinfo on fallback-button in header 
 // (link to imprint above the fold a legal requirement in Germany)

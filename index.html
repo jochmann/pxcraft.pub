@@ -10,21 +10,26 @@
 		
 		<link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
 		
-		<title class="is-title"></title><!-- title automatically generated from meta-data (see below in footer) -->
-		<meta name="description" content=""><!-- update as needed -->
-		<meta name="keywords" content=""><!-- update as needed -->
-		<meta name="author" content=""><!-- update as needed -->
+		<title></title><!-- see also meta-data-block in footer (with pelican: generated from meta-data) -->
+		<meta name="description" content=""><!-- with pelican: generated from meta-data -->
+		<meta name="keywords" content=""><!-- with pelican: generated from meta-data -->
+		<meta name="author" content=""><!-- with pelican: generated from meta-data -->
 		
 		<link rel="stylesheet" href="/css/fonts.css">
 		<link rel="stylesheet" href="/css/normalize.min.css">
 		<link rel="stylesheet" href="/css/layout.css"/>
 		<link rel="stylesheet" href="/css/interface.css"/>
 		
+		<link rel="alternate" hreflang="en" href="" /><!-- generated from meta-data (see below) -->
+		<link rel="alternate" hreflang="de" href="" /><!-- generated from meta-data (see below) -->
+		<link rel="alternate" hreflang="es" href="" /><!-- generated from meta-data (see below) -->
+		
 		<script src="/js/modernizr.custom.js"></script>
 		<script src="/js/viewport-units-buggyfill.js"></script>
 		<script>window.viewportUnitsBuggyfill.init();</script>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script>if (!window.jQuery) { document.write('<script src="/js/jquery-2.1.3.min.js"><\/script>'); }</script>
+		<script src="/js/jquery.waypoints.min.js"></script>
 
 	</head>
 	<body>
@@ -34,7 +39,7 @@
 		<header role="banner">
 			<button class="js-fallback-pointerevents js-toggle-contentinfo" role="button" style="display: none;">imprint</button>
 			
-			<!-- h1 automatically generated from meta-data (in footer) -->
+			<!-- h1 in pelican: automatically generated from meta-data -->
 			<h1 class="is-title"></h1>
 		</header>
 
@@ -99,34 +104,44 @@
 					<h3>Metadata:</h3>
 					<ul>
 						<!-- metadata in dcmi-terms (added programmatically with pelican) used to update DOM -->
-						<li><span class="text js-get-book-resource"></span></li>
+						<li><small>resource: </small><span class="text js-get-resource"></span></li>
 						<li><small>title: </small><span class="title js-get-title">TITLE</span></li>
 						<li><small>alternative: </small><span class="alternative js-get-subtitle"></span></li>
-						<li><small>version: </small><span class="version"></span></li>
+						<li><small>version: </small><span class="version js-get-version"></span></li>
 						<li><small>creator: </small><span class="creator js-get-author"></span></li>
-						<li><small>contributor: </small><span class="contributor"></span></li>
-						<li><small>identifier: </small><span class="identifier"></span></li>
+						<li><small>contributor: </small><span class="contributor"><a href="http://pixelcraftbooks.com">pixelcraftbooks</a></span></li>
+						<li><small>translator: </small><span class="translator"></span></li>
+						<li><small>publisher: </small><span class="publisher"></span></li>
+						<li><small>identifier: </small><span class="identifier js-get-url"></span></li>
 						<li><small>series: </small><span class="series"></span></li>
 						<li><small>chapter: </small><span class="chapter js-get-chapter"></span></li>
-						<li><small>type: </small><span class="type"></span></li>
-						<li><small>language: </small><span class="language"></span></li>
-						<li><small>abstract: </small><span class="abstract"></span></li>
+						<li><small>type: </small><span class="type js-get-genre"></span></li>
+						<li><small>language: </small><span class="language js-get-language">English</span></li>
+						<li><small>subject: </small><span class="subject js-get-keywords"></span></li>
+						<li><small>abstract: </small><span class="abstract js-get-description"></span></li>
+						<li><small>translations: </small>
+							<ul class="translations"><!-- used to update header metadata & UI -->
+								<li><small>English: </small><a class="js-get-href-en" hreflang="en" href=""></a></li>
+								<li><small>Deutsch: </small><a class="js-get-href-de" hreflang="de" href=""></a></li>
+								<li><small>Español: </small><a class="js-get-href-es" hreflang="es" href=""></a></li>
+							</ul>
+						</li>
+						<li><small>download: </small><a class="js-get-download-link" href=""></a></li><!-- for gumroad links -->
 					</ul>
 				</section>
 			</aside>
 			
 			<!-- comments (added programmatically with pelican) -->
-			<!-- hard code comments thusly, p-N assigns the comment to the corresponding paragraph:
-				<ul class="comments-list p-0">
-					<li><span class="comment-author">NAME:</span> COMMENTTEXT</li>
-				</ul>
-			-->
 			<article id="comments" style="display:none;">
+				<!-- hard code comments thusly, p-N assigns the comment to the corresponding paragraph:
+					<ul class="comments-list p-0">
+						<li><span class="comment-author">NAME:</span> COMMENTTEXT</li>
+					</ul>
+				-->
 			</article>
 			
 		</footer>
 
-		<script src="/js/jquery.waypoints.min.js"></script>
 		<script src="/js/jquery.readingTime.js"></script>
 		<script src="/js/jquery.paragraphLinks.js"></script>
 		<script src="/js/plugins.js"></script>

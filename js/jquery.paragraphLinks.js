@@ -52,7 +52,7 @@
 				};
 
 			var mailBody = "Title: Comment \n Date: n/a \n Author: ⬅ \n Slug: "+url+" \n Paragraph: "+"#"+hash+" \n \n write your name (author) where indicated above, your comment below this line \n ⬇⬇⬇⬇";
-			var mail = $('<a/>').attr('href', 'mailto:comments@pixelcraftbooks.com?Subject=Comment%20'+url+'#'+hash+'&body='+encodeURIComponent(mailBody))
+			var mail = $('<a/>').attr('href', 'mailto:comments@pxcraft.pub?Subject=Comment%20'+url+'#'+hash+'&body='+encodeURIComponent(mailBody))
 			.attr('role', 'button')
 			.text('comment');
 
