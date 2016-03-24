@@ -4,9 +4,11 @@
 # TEAM
 
     <name> -- <role> -- <twitter>
+    Jakob —- product architect —- @jochmann
+    Jule —- junior content chief
 
 # THANKS
-
+    
     <name>
     pixelcraftbooks for providing pxcraft.pub
 
@@ -14,4 +16,4 @@
 
     HTML5, CSS3
     jQuery, Modernizr
-    pandoc, pelican, markdown
+    pandoc, markdown

@@ -1,0 +1,452 @@
+/* STYLES UNIQUE TO THE PXCRAFT-UI
+ * 
+ * CONTENT:
+ * - ui container
+ * - ui menu
+ * - ui metadata
+ * - ui close-button
+ * - accessible toggle switch
+ * - modal content
+ * - reading mode toggles
+ * - toc & imprint & comments
+ *
+ */
+
+/*
+* ========= UI CONTAINER =========
+* contains heart-button (toggles menu) and menu
+*/
+#ui-container {
+	color: #050505;
+	height: 40px;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	overflow: visible;
+	z-index: 10;
+}
+/* animates in on page load, toggles UI */
+#ui-heart {
+	display: block;
+	width: 60px;
+	height: 60px;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	top: -54px;
+	left: calc(50% - 30px);
+	border: 1px #fff solid;
+	border-radius: 50%;
+	background: rgba(240,240,240,0.9);
+	box-shadow: 0px 0px 6px rgba(0,0,0,0.4);
+	/* opacity: 0.1; */
+	transition: opacity 0.2s linear;
+	animation: ui-heart-ghosted 3.5s 1 ease-out;
+}
+	#ui-heart:hover {
+		opacity: 1;
+	}
+#ui-heart.is-active {
+	opacity: 0.1;
+}
+#ui-heart svg {
+	width: 100%;
+	height: 100%;
+}
+#ui-heart-outline {
+	fill: none; /* start invisible to animate in on page load */
+	stroke: #aaa;
+	stroke-linecap: round;
+	stroke-width: 1;
+	stroke-dasharray: 0, 0, 20, 200;
+	stroke-dashoffset: 20;
+	stroke-linejoin: round;
+	animation: ui-heart-draw 2.5s 1 linear;
+}
+#ui-heart-icon {
+	stroke: rgba(0,0,0,0.2);
+	stroke-width: 1;
+	opacity: 1;
+	animation: ui-heart-iconfadein 2.5s 1 ease-out;
+}
+@keyframes ui-heart-draw {
+	0% {
+		stroke: #999;
+		opacity: 1;
+	}
+	37.5% {
+		stroke: #888;
+		opacity: 1;
+	}
+	67.5% {
+		stroke-dashoffset: 0;
+		stroke-dasharray: 0, 0, 220, 200;
+		stroke: #777;
+		opacity: 1;
+	}
+	100% {
+		stroke-dashoffset: 0;
+		stroke-dasharray: 0, 0, 220, 200;
+		stroke: #fff;
+		opacity: 0;
+	}
+}
+@keyframes ui-heart-ghosted {
+	0% {
+		opacity: 1;
+	}
+	80% {
+		opacity: 1;
+	}
+	90% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0.1;
+	}
+}
+@keyframes ui-heart-iconfadein {
+	0% {
+		opacity: 0;
+	}
+	37.5% {
+		opacity: 0;
+	}
+	67.5% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+/*
+ * ========= UI MENU =========
+ * provides background for menu elements and meta data
+ * default is to leave top 40px visible at bottom of screen
+ * animates in from bottom when assigned class "is-active"
+ */
+#menu-container {
+	display: block;
+	font-size: 15px; /* protect UI from resizing */
+	text-align: center;
+	box-sizing: border-box;		
+	width: 100%;
+	height: 310px; /* iphone usable */
+	position: fixed;
+	left: 0;
+	bottom: -270px;	/* height - 40px iOS browser chrome padding */
+	background-color: #fafafa; /* old IE */
+	background-color: rgba(240,240,240,.95);
+	border-top: 1px solid rgba(255,255,255,1);
+	box-shadow: 0 0 5px rgba(20,20,20,.6);
+	transition: opacity 0.3s linear, bottom 0.3s ease-out;
+}
+	@media screen and (min-width: 724px) {
+		/* shrink down at broader screens */
+		 #menu-container {
+			 height: 180px;
+			 bottom: -140px; /* height - 40px iOS browser chrome padding */
+		 }
+	}
+#menu-container.is-active {
+	bottom: 0;
+}
+	@media screen and (min-width: 724px) {
+		/* shrink down at broader screens */
+		 #menu-container.is-active {
+			 height: 180px;
+			 bottom: 0;
+		 }
+	}
+	#menu-container form,
+	#menu-container label { /* reset menu elements */
+		margin: 0;
+		padding: 0;
+		border: 0;
+	}
+	#menu-container div > button,
+	#menu-container form > button { /* reset menu elements */
+		margin-top: 10px;
+		margin-bottom: 0;
+		width: 100%;
+	}
+.menu-element-wrapper { /* centers content, max two elements each */
+	display: inline-block;							
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 360px; /* iphone width */
+	height: 3.8em;
+	padding: 5px 10px;
+	opacity: 0; /* hide menu items on default */
+	transition: opacity 0.5s linear;
+}
+	#menu-container.is-active > .menu-element-wrapper {
+		opacity: 1;
+	}
+	.menu-element-wrapper-single > * { /* fix vertical rhythm for single elements in wrapper */
+		 float: left;
+		 width: 100%;
+	}
+	.menu-element-left {						
+		float: left;
+		width: calc(50% - 10px);
+	}
+	.menu-element-right {						
+		float: right;
+		width: calc(50% - 10px);
+	}	
+
+/*
+* ========= UI METADATA =========
+* displays (dynamic) data points
+* title, chapter no, reading time until end of chapter
+*/
+#ui-metadata {
+	text-align: center;
+	font-size: 14px;
+	line-height: 1;
+	font-family: "Source Code Pro", Monospace;
+	position: absolute;
+	bottom: -8px;
+	width: 100%;
+	height: 100%;
+	opacity: 1;
+	transition: all 0.3s linear;
+}
+#ui-metadata.is-active {
+	opacity: 0;
+	bottom: -40px;
+}
+#ui-metadata .metadata-readingtime {
+	display: inline;
+	float: right;
+	margin-right: 1em;
+}
+#ui-metadata .metadata-chaptercount {
+	display: inline;
+	float: left;
+	margin-left: 1em;
+}
+#ui-metadata .metadata-title {
+	display: block;
+	width: calc(100% - 18em);
+	margin: auto;
+}
+/*
+* ========= UI CLOSE-BUTTON =========
+* universal close button
+* animates in on active modals & active menu
+* removes "is-active" class
+*/
+#ui-close-button {
+	display: block;
+	font-size: 16px;
+	position: fixed;
+	bottom: -5em;
+	width: 100%;
+	margin: 0;
+	background: rgba(240,240,240,0.9);
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.5s linear, bottom 0.5s ease-out;
+	z-index: 30;
+}
+#ui-close-button.is-active {
+	visibility: visible;
+	opacity: 1;
+	bottom: 0;
+}
+
+/*
+ * ========= ACCESSIBLE TOGGLE SWITCH =========
+ * screen reader proof animated lightswitch
+ * modified from Ionuț Colceriu - ghinda.net
+ */
+.switch-interface { /* Hide by default */
+	display: none;
+}
+/* target modern browsers only w media query */
+@media only screen {
+	.switch { 
+		position: relative;
+		display: block;
+	}
+		/* simulate browser focus outlines when the inputs are focused	 */
+		.switch::after {
+			clear: both;
+			content: "";
+			display: table; 
+		}
+		.switch *,
+		.switch *:before,
+		.switch *:after {
+			box-sizing: border-box;
+			transition: all 0.2s;
+		}
+		.switch input:focus ~ .switch-interface .switch-target,
+		.switch input:focus + label {
+			outline-width: 2px;
+			outline-style: solid;
+			outline-color: Highlight;
+		}
+	/* hide input, not to screen-readers and keyboard */
+	.switch input { 
+		position: absolute;
+		opacity: 0;
+		z-index: 3;
+	}	
+	.switch-interface {
+		position: relative;
+		overflow: hidden;
+		display: block;
+		min-height: calc(1em * 1.6); /* font x line height */
+		margin: 0;
+		padding: 0;
+		background-color: #fafafa;
+		border: 1px #ccc solid;
+		border-radius: .2em;
+		box-shadow: inset rgba(0, 0, 0, 0.3) 0 1px 0;
+		cursor: pointer;
+	}
+	.switch-target { /* button styles apply */
+		display: block;
+		position: absolute;
+		right: 50%;
+		top: 0;
+		width: calc(50% - 2px);
+		height: calc(100% - 2px);
+		margin: 1px;
+		padding: 0;
+		z-index: 1;
+	}
+	/* default: selection OFF */
+	.switch-on,
+	.switch-off {
+		position: relative;
+		z-index: 2;
+		display: block;
+		float: left;
+		width: 50%;
+		text-align: center;
+		-webkit-user-select: none;
+			 -moz-user-select: none;
+				-ms-user-select: none;
+						user-select: none; 
+	}
+	.switch-on {
+		opacity: 0;
+		color: #850408; 
+	}
+	.switch-off {
+		opacity: 1; 
+	}
+	/* selection ON */		
+	.switch input:checked ~ .switch-interface .switch-target {
+		right: 0%;
+	}
+	.switch input:checked ~ .switch-interface .switch-off {
+		opacity: 0; 
+	}
+	.switch input:checked ~ .switch-interface .switch-on {
+		opacity: 1; 
+	}
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 0) {
+	.switch input:focus ~ .switch-interface .switch-target {
+		outline-color: -webkit-focus-ring-color;
+		outline-style: auto; 
+	}
+}
+/* Bugfix for older Webkit */
+@media only screen and (-webkit-max-device-pixel-ratio: 2) and (max-device-width: 80em) {
+	.switch {
+		-webkit-animation: webkitSiblingBugfix infinite 1s;
+	} 
+}
+@-webkit-keyframes webkitSiblingBugfix {
+	from {
+		-webkit-transform: translate3d(0, 0, 0);
+	}
+	to {
+		-webkit-transform: translate3d(0, 0, 0);
+	}
+}
+
+/*
+ * ========= MODAL CONTENT =========
+ * one universal modal to rule them all
+ * modals reside in footer
+ * turns the class that is triggered by JavaScript into a modal screen overlay
+ * moves in from botton on click, is visible for screen readers
+ */
+.is-modal {
+	position: fixed;
+	bottom: -100vh;
+	width: 100%;
+	height: 60vh;
+	min-height: 280px; /* iphone 4 width in landscape - browser chrome */
+	color: rgba(15,15,15,1);
+	padding-top: 1.5em;
+	padding-bottom: 3.5em;
+	background-color: #fafafa; /* old IE */
+	background-color: rgba(240,240,240,.9);
+	border: 1px solid rgba(255,255,255,1);
+	box-shadow: 0 0 5px rgba(20,20,20,.6);
+	opacity: 0;
+	visibility: hidden;
+	overflow: scroll;
+	-webkit-overflow-scrolling: touch;
+	z-index: 20;
+}
+.is-modal.is-active {
+	opacity: 1;
+	visibility: visible;
+	bottom: 0;
+}
+#modal-bg {
+	position:fixed;
+	bottom: calc(0 - 100%);
+	width: 100%;
+	height: 100%;
+	background: #808080;
+	z-index: 0;
+	opacity: 0;	/* hide on default */
+	transition: opacity 0.7s linear;
+}
+#modal-bg.is-active {
+	bottom: 0;
+	opacity: 0.7;
+}
+body > footer > article {
+	/* scope transitions for modals to main footer */
+	transition: bottom 0.5s ease-out, opacity 0.5s linear;
+}
+
+/*
+ * ========= READING MODE TOGGLES =========
+ * dynamic style switch, class added with javascript
+ */
+body {
+	transition: background-color 1s ease-in;
+}
+.is-night {
+	background-color: black;
+	color: #fafafa;
+}
+
+/*
+ * ========== #TOC & #IMPRINT & #COMMENTS ========= 
+ * styles content in the modals for these elements
+ */
+#toc * {
+	transition: none; /* fix flash of content before it collapses into modal */
+	/* TO DO: work out proper fix */
+}
+#toc .h2 {
+	text-indent: 2em;
+	}
+/* hide comments, only appear if javascript fires */
+#comments {
+	display: none;
+}

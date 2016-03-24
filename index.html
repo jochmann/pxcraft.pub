@@ -1,151 +1,244 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html><!-- set language manually -->
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+		<meta name="referrer" content="origin">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 		
 		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
 		
-		<link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
+		<title>pxcraft.pub</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="author" content="">
 		
-		<title></title><!-- see also meta-data-block in footer (with pelican: generated from meta-data) -->
-		<meta name="description" content=""><!-- with pelican: generated from meta-data -->
-		<meta name="keywords" content=""><!-- with pelican: generated from meta-data -->
-		<meta name="author" content=""><!-- with pelican: generated from meta-data -->
+		<!-- stylesheets to be merged and minified in build-process -->
+		<link rel="stylesheet" href="assets/css/normalize.min.css">
+		<link rel="stylesheet" href="assets/css/fonts.css">
+		<link rel="stylesheet" href="assets/css/layout.css">
+		<link rel="stylesheet" href="assets/css/helper.css">
+		<link rel="stylesheet" href="assets/css/ui.css">
 		
-		<link rel="stylesheet" href="/css/fonts.css">
-		<link rel="stylesheet" href="/css/normalize.min.css">
-		<link rel="stylesheet" href="/css/layout.css"/>
-		<link rel="stylesheet" href="/css/interface.css"/>
-		
-		<link rel="alternate" hreflang="en" href="" /><!-- generated from meta-data (see below) -->
-		<link rel="alternate" hreflang="de" href="" /><!-- generated from meta-data (see below) -->
-		<link rel="alternate" hreflang="es" href="" /><!-- generated from meta-data (see below) -->
-		
-		<script src="/js/modernizr.custom.js"></script>
-		<script src="/js/viewport-units-buggyfill.js"></script>
-		<script>window.viewportUnitsBuggyfill.init();</script>
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		<script>if (!window.jQuery) { document.write('<script src="/js/jquery-2.1.3.min.js"><\/script>'); }</script>
-		<script src="/js/jquery.waypoints.min.js"></script>
-
+		<link class="js-en" rel="alternate" hreflang="en" href="">
+		<link class="js-de" rel="alternate" hreflang="de" href="">
+		<link class="js-es" rel="alternate" hreflang="es" href="">
 	</head>
-	<body>
+	
+	<body><!-- gets class "is-night" to toggle night mode -->
+		<!-- test browser capabilities with modernizr-script called in helper.js to warn users who don't support important features - if javascript is disabled, noscript warning -->
 		<p class="browser-warning js-modernizr-warning" style="display:none;">Please understand that we strive to give you the best reading experience possible. But there are limits to what we can do when your reading device does not conform to standards. <br>You can help, too: <br>choose a modern browser.</p>
 		<noscript><p class="browser-warning">You will need to enable JavaScript to enjoy the interactive elements.</p></noscript>
 		
-		<header role="banner">
-			<button class="js-fallback-pointerevents js-toggle-contentinfo" role="button" style="display: none;">imprint</button>
-			
-			<!-- h1 in pelican: automatically generated from meta-data -->
-			<h1 class="is-title"></h1>
+		<header role="banner"><!-- unique role for top level header -->
+			<h1>development guide (alpha)</h1>
 		</header>
 
-	
 		<main role="main">
+			<!-- START OF CONTENT -->
 			<article>
-				<!-- START OF CONTENT -->
-					<!-- 
-						this is the area where you can drop vanilla HTML
-						such HTML is produced by markdown conversion or similar authoring software
-						content created programmatically
-					-->
 				
-				<!-- END OF CONTENT -->
+				<h2 id="1">UI-logic</h2>
+				<p><em>layout.css</em> applies styles to semantic elements. No classes.</p>
+				<p><em>helper.css</em> goes with <em>helper.js</em> and is an optional add on to programmatically enhance vanilla HTML with further layout niceties and functionality.</p>
+				<p>The <em>user interface</em> is sectioned off in the document (commented in HTML). It can be added after the footer. With the user interface go <em>ui.css</em> and <em>ui.js</em> to programmatically enhance vanilla HTML5 (book-)documents.</p>
+				<p><code>is-modal</code> & <code>is-active</code> <strong>classes</strong> used to apply dynamic styles to switch the UI elements on/off</p>
+				<p><code>imprint</code> & <code>toc</code> & <code>comments</code> are <strong>IDs</strong> relevant to meta-information about the document. They are (partly) populated by scripts from other parts of the document and turned into modals programmatically on load.</p>
+				<p>We test browser capabilities (with modernizr customized javascript) to warn users who don't support important features. Test script is called in <em>helper.js</em></p>
+				<p>Classes in use to toggle modals: <code>js-toggle-imprint, js-toggle-toc, js-toggle-?</code>...</p>
+				
+				
+				<h2>naming-conventions</h2>
+				<h4>sorry, not fully streamlined yet</h4>
+				<p>css is interlinked (no camel case) at molecular segments. Look if a segment could work as a component of another class (or id).</p>
+				<p>
+					<strong>e.g.</strong><br>
+					<code>class="ui-menu" class="ui-menu-button" class="menu-element-button-wrapper"</code>
+				</p>
+				<p>established names<br>
+					<code>is-</code> prefix for dynamically applied classes<br><code>js-</code> prefix for classes on which javascript relies to trigger events</p>
+				<p>verbs (concatenated) before noun they apply to. e.g. <code>js-scrollto-footer</code></p>
 			</article>
+			<!-- END OF CONTENT -->
 		</main>
+				
 		
-		
-		<footer class="ui-container">		
+		<!-- contentinfo: unique role for top level footer -->
+		<footer role="contentinfo"><!-- contains meta-information pertaining to current document (made into modals programmatically) -->
+			<article id="imprint"><!-- dynamically gets classes "	is-modal" and "is-active" -->
+				<h3 class="vcard">imprint:</h3>
+				<ul>
+					<li class="publisher"><span class="fn org">publisher</span> <span class="issued">(2016)</span> <br><span class="adr"><span class="street-address">address</span>, <span class="postal-code">04177</span> <span class="locality">city</span>, <span class="country-name">country</span></span></li>
+				</ul>
+			</article>
+			<article id="toc"><!-- dynamically gets classes "is-modal" and "is-active" -->
+				<h3>Table Of Contents:</h3>
+				<ul>
+					<li></li>
+				</ul>
+			</article>
 			
-			<!-- preloader for User Interface (below) - delete, if you forego the UI -->
-			<div id="ui-preloader">
-				<div class="preloader">
-					loading interface (javascript required)
-					<br>
-					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-						 width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
-					<path fill="#000" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z">
-						<animateTransform attributeType="xml"
-							attributeName="transform"
-							type="rotate"
-							from="0 25 25"
-							to="360 25 25"
-							dur=".8s"
-							repeatCount="indefinite"/>
-						</path>
+			<!-- the following metadata sections have all been disabled with display:none; -->
+			<section class="license" style="display:none;">
+				<!--
+					uncomment and hard code the license owner, or change programmatically as needed
+					<p class="license-attribution">this book belongs to:<br><span class="license-owner">You</span></p>
+				-->
+				<h3>License Agreement</h3>
+				<p>You may do whatever you want with the CSS, Javascript and HTML structure of this document as long as you credit <em>pixelcraftbooks</em> and all contributers mentioned in copyright notices for their original effort. The software is made available under the <a rel="license" href="http://opensource.org/licenses/MIT">MIT license</a>. The rights for text and graphics remain with their respective creators. You need to ask for permission if you want to use the content outside of this book.</p>
+			</section>
+			<section class="metadata" style="display:none;">
+				<h3>Metadata:</h3>
+				<ul>
+					<!-- metadata in dcmi-terms (added programmatically with pelican) used to update DOM -->
+					<li><small>resource: </small><span class="text js-get-resource">web site</span></li>
+					<li><small>title: </small><span class="title js-get-title"></span></li>
+					<li><small>alternative: </small><span class="alternative js-get-subtitle"></span></li>
+					<li><small>version: </small><span class="version js-get-version">0.3</span></li>
+					<li><small>creator: </small><span class="creator js-get-author"></span></li>
+					<li><small>contributor: </small><span class="contributor">pixelcraftbooks</span></li>
+					<li><small>translator: </small><span class="translator"></span></li>
+					<li><small>identifier: </small><span class="identifier js-get-url"></span></li>
+					<li><small>series: </small><span class="series"></span></li>
+					<li><small>chapter: </small><span class="chapter js-get-chapter"></span></li>
+					<li><small>type: </small><span class="type js-get-genre"></span></li>
+					<li><small>language: </small><span class="language js-get-language">English</span></li>
+					<li><small>subject: </small><span class="subject js-get-keywords"></span></li>
+					<li><small>abstract: </small><span class="abstract js-get-description"></span></li>
+					<li><small>translations: </small>
+						<ul class="translations">
+							<li><small>English: </small><a class="js-get-href-en" hreflang="en" href="/en/">On Digital Publishing</a></li>
+							<li><small>Deutsch: </small><a class="js-get-href-de" hreflang="de" href="/de/">Digitales Publizieren</a></li>
+							<li><small>Español: </small><a class="js-get-href-es" hreflang="es" href=""></a></li>
+						</ul>
+					</li>
+					<li><small>download: </small><a class="js-get-download-link" href=""></a></li><!-- for gumroad links -->
+				</ul>
+			</section>
+
+			<!-- comments hidden per default (only work w js anyway) -->
+			<!-- disabled - NEED REFACTORING
+			<article id="comments" style="display:none;">
+				<nav class="menuContainer">
+					 <h4>link to paragraph</h4>
+										 <a href="" class="infofield full" id="permalink"></a><span class="infofield" id="permalink"></span>
+										 <a id="comment_mail" title="share this paragraph with mail" href="mailto:comments@pxcraft.pub?Subject=Comment%20http://pxcraft.pub/en/treasure-island/#p-21#p-22&" role="button">comment</a>
+					 <a id="comment_facebook" title="share this paragraph on facebook" href="" target="_blank" role="button">share</a>
+					 <a id="comment_twitter" title="tweet this paragraph" href="" target="_blank" role="button">tweet</a>
+					 <a id="comment_pinterest" title="pin this paragraph" href="" target="_blank" role="button">pin</a>
+				</nav>
+			</article>
+			-->
+		
+		</footer>
+		
+		<!-- USER INTERFACE -->
+		<div role="application" id="ui-container"><!-- UI goes into semantically neutral element, aria landmarked "application" to declare to screenreaders that its content is not (part of) a document -->
+
+			<div id="menu-container"><!-- dynamically gets class "is-active" -->
+				
+				<!-- MENU TRIGGER-BUTTON -->
+				<button role="button" id="ui-heart" class="js-toggle-menu"><!-- dynamically gets class "is-active" -->
+					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="60" height="60" viewBox="0, 0, 60, 60">
+						<defs>
+							<linearGradient id="Gradient_1" gradientUnits="userSpaceOnUse" x1="15.116" y1="37.228" x2="15.116" y2="6.556">
+								<stop offset="0" stop-color="#7A0606"/>
+								<stop offset="1" stop-color="#EE0000"/>
+							</linearGradient>
+							<linearGradient id="Gradient_2" gradientUnits="userSpaceOnUse" x1="28.613" y1="50.917" x2="28.613" y2="20.245">
+								<stop offset="0" stop-color="#7A0606"/>
+								<stop offset="1" stop-color="#EE0000"/>
+							</linearGradient>
+							<linearGradient id="Gradient_3" gradientUnits="userSpaceOnUse" x1="42.302" y1="37.42" x2="42.302" y2="6.748">
+								<stop offset="0" stop-color="#7A0606"/>
+								<stop offset="1" stop-color="#EE0000"/>
+							</linearGradient>
+						</defs>
+						<g>
+							<g id="ui-heart-icon">
+								<path d="M16.309,37.376 C16.31,37.377 16.313,37.378 16.314,37.376 L29.997,23.885 C29.999,23.883 29.999,23.881 29.998,23.879 L16.506,10.196 C16.505,10.195 16.502,10.194 16.501,10.196 L2.817,23.687 C2.816,23.689 2.816,23.691 2.817,23.693 L16.309,37.376 z" fill="url(#Gradient_1)" id="rect124154"/>
+								<path d="M29.805,51.065 C29.807,51.066 29.809,51.066 29.811,51.065 L43.494,37.573 C43.495,37.572 43.495,37.569 43.494,37.568 L30.002,23.884 C30.001,23.883 29.999,23.883 29.997,23.884 L16.314,37.376 C16.312,37.377 16.312,37.38 16.314,37.381 L29.805,51.065 z" fill="url(#Gradient_2)" id="rect124156"/>
+								<path d="M43.494,37.568 C43.495,37.569 43.498,37.569 43.499,37.568 L57.183,24.076 C57.184,24.075 57.184,24.072 57.183,24.071 L43.691,10.388 C43.69,10.386 43.687,10.386 43.686,10.388 L30.003,23.879 C30.001,23.881 30.001,23.883 30.002,23.884 L43.494,37.568 z" fill="url(#Gradient_3)" id="rect124158"/>
+							</g>
+							<path id="ui-heart-outline" d="M16.813,37.217 L3.317,24.187 L17.006,10.696 L30.316,24.383 L16.813,37.333 L30.305,51.564 L43.995,37.877 L30.502,24.379 L44.191,10.888 L57.683,24.571 L43.995,37.877"/>
+						</g>
 					</svg>
+				</button>
+				<!-- END MENU TRIGGER-BUTTON -->
+
+				<div class="menu-element-wrapper menu-element-wrapper-single">
+					<form id="menu-element-nightmode">
+						<label class="switch js-toggle-night"><!-- javascript adds clasa "is-night" to body on click -->
+
+							<input type="checkbox" id="night-switch">
+							<span class="switch-label">night mode</span>
+							<span class="switch-interface">
+								<span class="switch-off">off</span>
+								<span class="switch-on">on</span>
+								<button class="switch-target"></button><!-- empty click target -->
+							</span>
+						</label>
+					</form>	
 				</div>
-			</div>		
-			<!-- User Interface, generated with tumult.co "Hype" software. Remove or cook your own, as needed -->
-			<div id="ui_hype_container" style="margin:auto;position:relative;width:100%;height:100%;overflow:hidden;-webkit-tap-highlight-color: rgba(0,0,0,0);" aria-live="polite">
-				<script type="text/javascript" charset="utf-8" src="/static/UI.hyperesources/ui_hype_generated_script.js?71378"></script>
+				
+				<div class="menu-element-wrapper menu-element-wrapper-single">
+					<form id="menu-element-fontsize">
+						<label for="fontsize-slider">font size</label>
+						<input id="fontsize-slider" type="range" min="80" max="150">
+					</form>
+				</div>	
+							
+				<div class="menu-element-wrapper menu-element-wrapper-single">	 
+					<button class="js-toggle-toc">table of contents</button>
+				</div>	
+				<div class="menu-element-wrapper menu-element-wrapper-single">
+						<button class="js-toggle-imprint">imprint</button>
+				</div>			
 			</div>
 			
-			<aside role="contentinfo" class="is-modal">
-				<section id="imprint">
-					<h3 class="vcard">Imprint:</h3>
-					<ul>
-						<!-- change the values of the vcard as applies - machine readable through hcard-standard classes -->
-						<li class="publisher"><span class="fn org">PUBLISHER NAME</span> <span class="issued">(DATE ISSUED)</span> <br><span class="adr"><span class="street-address">STREET ADDRESS</span>, <span class="postal-code">POSTAL CODE</span> <span class="locality">CITY</span>, <span class="country-name">COUNTRY</span></span><br><small>powered by:</small> <a href="http://pxcraft.pub">pxcraft.pub</a></li>
-				</ul>
-				</section>
-				<section class="license">
-					<!--
-						uncomment and hard code the license owner, or change programmatically as needed
-						<p class="license-attribution">this book belongs to:<br><span class="license-owner">You</span></p>
-					-->
-					<h3>License Agreement</h3>
-					<p>You may do whatever you want with the CSS, Javascript and HTML structure of this document as long as you credit <em>pixelcraftbooks</em> and all contributers mentioned in copyright notices for their original effort. The software is made available under the <a rel="license" href="http://opensource.org/licenses/MIT">MIT license</a>. The rights for text and graphics remain with their respective creators. You need to ask for permission if you want to use the content outside of this book.</p>
-				</section>
-				<section class="metadata">
-					<h3>Metadata:</h3>
-					<ul>
-						<!-- metadata in dcmi-terms (added programmatically with pelican) used to update DOM -->
-						<li><small>resource: </small><span class="text js-get-resource"></span></li>
-						<li><small>title: </small><span class="title js-get-title">TITLE</span></li>
-						<li><small>alternative: </small><span class="alternative js-get-subtitle"></span></li>
-						<li><small>version: </small><span class="version js-get-version"></span></li>
-						<li><small>creator: </small><span class="creator js-get-author"></span></li>
-						<li><small>contributor: </small><span class="contributor"><a href="http://pixelcraftbooks.com">pixelcraftbooks</a></span></li>
-						<li><small>translator: </small><span class="translator"></span></li>
-						<li><small>publisher: </small><span class="publisher"></span></li>
-						<li><small>identifier: </small><span class="identifier js-get-url"></span></li>
-						<li><small>series: </small><span class="series"></span></li>
-						<li><small>chapter: </small><span class="chapter js-get-chapter"></span></li>
-						<li><small>type: </small><span class="type js-get-genre"></span></li>
-						<li><small>language: </small><span class="language js-get-language">English</span></li>
-						<li><small>subject: </small><span class="subject js-get-keywords"></span></li>
-						<li><small>abstract: </small><span class="abstract js-get-description"></span></li>
-						<li><small>translations: </small>
-							<ul class="translations"><!-- used to update header metadata & UI -->
-								<li><small>English: </small><a class="js-get-href-en" hreflang="en" href=""></a></li>
-								<li><small>Deutsch: </small><a class="js-get-href-de" hreflang="de" href=""></a></li>
-								<li><small>Español: </small><a class="js-get-href-es" hreflang="es" href=""></a></li>
-							</ul>
-						</li>
-						<li><small>download: </small><a class="js-get-download-link" href=""></a></li><!-- for gumroad links -->
-					</ul>
-				</section>
-			</aside>
+<!-- dynamic metadata scripts for chaptercount&title missing. hardcoded for now -->
+			<div id="ui-metadata">
+				<span class="metadata-chaptercount js-chaptercount">Chapter 1</span>				
+				<span class="metadata-readingtime js-readingtime">time</span>
+				<span class="metadata-title js-title">title</span>
+			</div>
+		
+		</div>
+		
+		<!-- new div to manage z-index and layer "ui-close-button">"is-modal">"ui-container" -->
+		<div role="application"><!-- UI goes into semantically neutral element, aria landmarked "application" to declare to screenreaders that its content is not (part of) a document -->
+			<button id="ui-close-button">— close —</button>	<!-- universal close button: dynamically gets class "is-active", removes all "is-active" classes on click -->
 			
-			<!-- comments (added programmatically with pelican) -->
-			<article id="comments" style="display:none;">
-				<!-- hard code comments thusly, p-N assigns the comment to the corresponding paragraph:
-					<ul class="comments-list p-0">
-						<li><span class="comment-author">NAME:</span> COMMENTTEXT</li>
-					</ul>
-				-->
-			</article>
-			
-		</footer>
+			<!-- empty div for semi-transparent layer over content on active modals -->
+			<div id="modal-bg"><!-- dynamically gets class "is-active" -->
+			</div>
+		</div>
+		<!-- END USER INTERFACE -->
+		
 
-		<script src="/js/jquery.readingTime.js"></script>
-		<script src="/js/jquery.paragraphLinks.js"></script>
-		<script src="/js/plugins.js"></script>
-		<script type="text/javascript" src="https://gumroad.com/js/gumroad.js"></script>
+		<!-- scripts are called right before closing body tag -->
+		
+		<!-- browser bugfix libraries -->
+		<script src="assets/js/modernizr.custom.js"></script>
+		<script src="assets/js/viewport-units-buggyfill.js"></script>
+		<script>window.viewportUnitsBuggyfill.init();</script>
+		
+		<!-- jQuery (called up here to make the plugins below work) -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script>if (!window.jQuery) { document.write('<script src="assets/js/jquery-2.1.3.min.js"><\/script>'); }</script>
+			
+		<!-- jQuery dependencies in scripts! -->	
+		<script src="assets/js/helper.js"></script>
+		<script src="assets/js/ui.js"></script>
+		<script src="assets/js/jquery.readingTime.js"></script>
+		
+		<style>
+		.js-test {
+			background: red;
+		}
+		</style>
 
 	</body>
 </html>
