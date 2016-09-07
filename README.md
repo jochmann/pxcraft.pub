@@ -1,6 +1,11 @@
 # pxcraft.pub
 This is a design foundation for a simple, yet powerful publishing paradigm for highly interactive digital books & longform reading. Find out more about <a href="http://pxcraft.pub/">why</a> we created this. Hopefully you'll be amped up to help us create a world with better, more beautiful digital reading experiences. We want to create digital literature to fall in love with.
 
+## heads up: major refactoring underway (late 2016)
+While using the framework for actual production we've encountered some insights to rethink our philosophy for the build process and the desired output. Lots of more stuff to be put into preprocessing, and (even more so than now) highly opinionated single-file-output builds to facilitate offline use and bandwidth conservation.
+
+The next version should give you a much easier time to do themeing and perhaps help with development. With scss, too.
+
 ### Currently the files in this repository consist of a template stack to turn vanilla HTML into beautiful longform reading through
 
 - classless CSS
